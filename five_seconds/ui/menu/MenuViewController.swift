@@ -10,6 +10,8 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    @IBOutlet weak var backgroundView: BackgroundView!
+    
     @IBOutlet weak var startButton: UIButton! {
         didSet {
             startButton.addTarget(self, action: #selector(self.startButtonAction), for: .touchUpInside)
@@ -21,6 +23,11 @@ class MenuViewController: UIViewController {
 
         navigationController?.navigationBar.isHidden = true
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        backgroundView.setupAnimation()
     }
 }
 

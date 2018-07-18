@@ -82,6 +82,7 @@
                     <connections>
                         <outlet property="addPlayerButton" destination="oy2-0U-g4B" id="nCS-dC-KPM"/>
                         <outlet property="cancelButton" destination="8yx-Gj-stt" id="dHN-Bh-KFr"/>
+                        <outlet property="mainView" destination="RIZ-C7-iYQ" id="jad-iH-tEQ"/>
                         <outlet property="startGameButton" destination="PWg-CZ-rQE" id="4lK-KW-Fmf"/>
                         <outlet property="tableView" destination="d2R-Tz-UNP" id="GZO-iS-h7L"/>
                     </connections>

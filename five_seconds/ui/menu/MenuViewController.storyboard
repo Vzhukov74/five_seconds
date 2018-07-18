@@ -20,43 +20,40 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WMR-h7-SiY" customClass="BackgroundView" customModule="_second" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="poG-if-O7b">
-                                        <rect key="frame" x="40" y="458" width="240" height="50"/>
-                                        <color key="backgroundColor" red="0.94509803920000002" green="0.56862745100000001" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="7qp-bH-3nf"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="Start">
-                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="25"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="poG-if-O7b" firstAttribute="centerX" secondItem="WMR-h7-SiY" secondAttribute="centerX" id="17C-KS-vyA"/>
-                                    <constraint firstAttribute="bottom" secondItem="poG-if-O7b" secondAttribute="bottom" constant="60" id="URt-3l-tvK"/>
-                                    <constraint firstItem="poG-if-O7b" firstAttribute="leading" secondItem="WMR-h7-SiY" secondAttribute="leading" constant="40" id="bc8-Ro-FvY"/>
-                                    <constraint firstAttribute="trailing" secondItem="poG-if-O7b" secondAttribute="trailing" constant="40" id="lV9-n5-OrR"/>
-                                </constraints>
                             </view>
+                            <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="poG-if-O7b">
+                                <rect key="frame" x="40" y="458" width="240" height="50"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.56862745100000001" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7qp-bH-3nf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="WMR-h7-SiY" firstAttribute="bottom" secondItem="6x3-k7-VNY" secondAttribute="bottom" id="4PG-Uy-srA"/>
+                            <constraint firstItem="poG-if-O7b" firstAttribute="centerX" secondItem="6x3-k7-VNY" secondAttribute="centerX" id="79Y-lo-MCD"/>
                             <constraint firstItem="WMR-h7-SiY" firstAttribute="top" secondItem="6x3-k7-VNY" secondAttribute="top" id="9Ru-UB-WHu"/>
                             <constraint firstItem="WMR-h7-SiY" firstAttribute="leading" secondItem="6x3-k7-VNY" secondAttribute="leading" id="BIb-As-lIO"/>
+                            <constraint firstItem="Feh-KX-FmE" firstAttribute="trailing" secondItem="poG-if-O7b" secondAttribute="trailing" constant="40" id="Qss-yN-OV5"/>
+                            <constraint firstItem="poG-if-O7b" firstAttribute="leading" secondItem="Feh-KX-FmE" secondAttribute="leading" constant="40" id="jPZ-ya-nST"/>
                             <constraint firstItem="WMR-h7-SiY" firstAttribute="trailing" secondItem="6x3-k7-VNY" secondAttribute="trailing" id="ryk-9G-HTx"/>
+                            <constraint firstItem="Feh-KX-FmE" firstAttribute="bottom" secondItem="poG-if-O7b" secondAttribute="bottom" constant="60" id="uFf-Ah-sdj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Feh-KX-FmE"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="WMR-h7-SiY" id="HNr-Yz-oFn"/>
                         <outlet property="startButton" destination="poG-if-O7b" id="99O-UP-ggR"/>
                     </connections>
                 </viewController>

@@ -11,6 +11,8 @@ import UIKit
 @IBDesignable
 class BackgroundView: UIView {
 
+    var arcColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
+    
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
         let colors = [#colorLiteral(red: 0.7607843137, green: 0.4862745098, blue: 0.8156862745, alpha: 1).cgColor, #colorLiteral(red: 0.3921568627, green: 0.262745098, blue: 0.7137254902, alpha: 1).cgColor]
@@ -28,49 +30,59 @@ class BackgroundView: UIView {
                                    start: startPoint,
                                    end: endPoint,
                                    options: [])
-        
-        let center = CGPoint(x: rect.width / 2, y: rect.height / 2)
+    }
+    
+    func setupAnimation() {
+        layer.speed = 1
+
+        let beginTime = CACurrentMediaTime() + Double(0.5)
+
+        let opacityAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        opacityAnimation.keyTimes = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+        opacityAnimation.values = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+        opacityAnimation.duration = 0.5
+
+
+        let groupAnimation = CAAnimationGroup()
+        groupAnimation.animations = [opacityAnimation]
+        groupAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        groupAnimation.duration = 0.5
+        groupAnimation.repeatCount = 1
+        groupAnimation.isRemovedOnCompletion = false
+
+        for index in 0..<6 {
+            let circle = makeArc(for: index)
+
+            groupAnimation.beginTime = beginTime + Double(index) * 0.4
+            circle.frame = self.bounds
+            circle.add(groupAnimation, forKey: "animation")
+            layer.addSublayer(circle)
+            
+        }
+    }
+    
+    private func makeArc(for index: Int) -> CALayer {
+        let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
         var lineWidth: CGFloat = 26
         let lineIncrement: CGFloat = 4
         let lineSpace: CGFloat = 24
-        var radius = (rect.width / 4)
-        let arcColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
+        var radius = (self.bounds.width / 4)
         
-        let path1 = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
-        path1.lineWidth = lineWidth
-        arcColor.setStroke()
-        path1.stroke()
+        lineWidth += CGFloat(index) * lineIncrement
+        radius += CGFloat(index) * lineSpace + CGFloat(index) * lineWidth
         
-        radius += lineSpace + lineWidth
-        lineWidth += lineIncrement
-
-        let path2 = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
-        path2.lineWidth = lineWidth
-        arcColor.setStroke()
-        path2.stroke()
-
-        radius += lineSpace + lineWidth
-        lineWidth += lineIncrement
-
-        let path3 = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
-        path3.lineWidth = lineWidth
-        arcColor.setStroke()
-        path3.stroke()
+        let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+        let layer: CAShapeLayer = CAShapeLayer()
         
-        radius += lineSpace + lineWidth
-        lineWidth += lineIncrement
+        layer.fillColor = UIColor.clear.cgColor
+        layer.strokeColor = arcColor.cgColor
+        layer.lineWidth = lineWidth
         
-        let path4 = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
-        path4.lineWidth = lineWidth
-        arcColor.setStroke()
-        path4.stroke()
+        layer.backgroundColor = nil
+        layer.path = path.cgPath
+        layer.frame = self.bounds
+        //layer.opacity = 0
         
-        radius += lineSpace + lineWidth
-        lineWidth += lineIncrement
-        
-        let path5 = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
-        path5.lineWidth = lineWidth
-        arcColor.setStroke()
-        path5.stroke()
+        return layer
     }
 }

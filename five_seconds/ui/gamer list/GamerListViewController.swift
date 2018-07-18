@@ -10,6 +10,8 @@ import UIKit
 
 class GamerListViewController: UIViewController {
 
+    @IBOutlet weak var mainView: UIView!
+    
     @IBOutlet weak var cancelButton: UIButton! {
         didSet {
             cancelButton.addTarget(self, action: #selector(self.cancelButtonAction), for: .touchUpInside)
@@ -62,19 +64,28 @@ extension GamerListViewController: StoryboardInstanceable {
         let addPlayerView = NewPlayerAddeterView(frame: .zero)
         
         addPlayerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(addPlayerView)
         
-        let addPlayerViewConstrains = [addPlayerView.widthAnchor.constraint(equalToConstant: self.view.bounds.width - 40), addPlayerView.heightAnchor.constraint(equalToConstant: self.view.bounds.height - 40), addPlayerView.centerYAnchor.constraint(equalTo: view.centerYAnchor), addPlayerView.centerXAnchor.constraint(equalTo: view.centerXAnchor)]
+        let size = mainView.bounds.size
         
-        NSLayoutConstraint.activate(addPlayerViewConstrains)
+        let addPlayerViewConstrains = [addPlayerView.widthAnchor.constraint(equalToConstant: size.width), addPlayerView.heightAnchor.constraint(equalToConstant: size.height), addPlayerView.centerYAnchor.constraint(equalTo: view.centerYAnchor), addPlayerView.centerXAnchor.constraint(equalTo: view.centerXAnchor)]
         
         addPlayerView.addPlayerAction = { [weak self] in
             self?.model.addNewPlayer(with: $0.name, imageKey: $0.imageKey)
         }
         
-        addPlayerView.backgroundColor = UIColor.red
-
-        view.layoutIfNeeded()
+        addPlayerView.backgroundColor = Colors.mainMenu
+        addPlayerView.cornerRadius = 25
+        addPlayerView.alpha = 0
+        addPlayerView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        
+        self.view.addSubview(addPlayerView)
+        NSLayoutConstraint.activate(addPlayerViewConstrains)
+        self.view.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveLinear], animations: {
+            addPlayerView.alpha = 1
+            addPlayerView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }, completion: nil)
     }
     
     private func startGameButtonAction() {

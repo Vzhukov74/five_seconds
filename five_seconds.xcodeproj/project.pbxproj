@@ -24,6 +24,7 @@
 		045ED7C520FE1070004155D2 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045ED7C320FE1070004155D2 /* PlayerCell.swift */; };
 		045ED7C620FE1070004155D2 /* PlayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045ED7C420FE1070004155D2 /* PlayerCell.xib */; };
 		045ED7C820FE1681004155D2 /* NewPlayerAddeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045ED7C720FE1681004155D2 /* NewPlayerAddeterView.swift */; };
+		045ED7CB20FF3434004155D2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045ED7CA20FF3433004155D2 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		045ED7C320FE1070004155D2 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		045ED7C420FE1070004155D2 /* PlayerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerCell.xib; sourceTree = "<group>"; };
 		045ED7C720FE1681004155D2 /* NewPlayerAddeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlayerAddeterView.swift; sourceTree = "<group>"; };
+		045ED7CA20FF3433004155D2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		045ED7A620FDFE60004155D2 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				045ED7C920FF3420004155D2 /* common */,
 				045ED7B620FE08DC004155D2 /* gamer list */,
 				045ED7B120FE00B8004155D2 /* views */,
 				045ED7A820FDFE71004155D2 /* navigation */,
@@ -172,6 +175,14 @@
 			path = models;
 			sourceTree = "<group>";
 		};
+		045ED7C920FF3420004155D2 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				045ED7CA20FF3433004155D2 /* Colors.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -247,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				045ED7B320FE00DE004155D2 /* BackgroundView.swift in Sources */,
+				045ED7CB20FF3434004155D2 /* Colors.swift in Sources */,
 				045ED7C820FE1681004155D2 /* NewPlayerAddeterView.swift in Sources */,
 				045ED7AE20FDFFFA004155D2 /* MenuViewController.swift in Sources */,
 				045ED7AC20FDFEBB004155D2 /* StoryboardList.swift in Sources */,
