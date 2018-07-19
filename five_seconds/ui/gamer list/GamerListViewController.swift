@@ -41,6 +41,7 @@ class GamerListViewController: UIViewController {
     }
     
     var model: GamerListModel!
+    var startGame: ((_ vc: UIViewController) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,20 @@ class GamerListViewController: UIViewController {
         model.updateUI = { [weak self] in
             self?.tableView.reloadData()
         }
+    }
+    
+    private func startGame(with vc: UIViewController) {
+        dismiss(animated: true) { [weak self] in
+            self?.startGame?(vc)
+        }
+    }
+    
+    private func showAlert() {
+        let alert = AlertView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
+        alert.clipsToBounds = true
+        alert.cornerRadius = 25
+        alert.backgroundColor = UIColor.lightGray
+        alert.show(on: mainView)
     }
 }
 
@@ -89,7 +104,14 @@ extension GamerListViewController: StoryboardInstanceable {
     }
     
     private func startGameButtonAction() {
-        
+        if model.players.count > 1 {
+            if let vc = GameViewController.storyboardInstance {
+                vc.model = GameModel(players: model.players)
+                startGame(with: vc)
+            }
+        } else {
+            showAlert()
+        }
     }
 }
 

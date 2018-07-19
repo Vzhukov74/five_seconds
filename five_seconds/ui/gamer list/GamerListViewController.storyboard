@@ -21,28 +21,31 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIZ-C7-iYQ">
                                 <rect key="frame" x="40" y="60" width="295" height="567"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yx-Gj-stt">
-                                        <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yx-Gj-stt">
+                                        <rect key="frame" x="8" y="8" width="50" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="VvH-VB-MCi"/>
-                                            <constraint firstAttribute="width" constant="40" id="msG-Wl-RIW"/>
+                                            <constraint firstAttribute="width" constant="50" id="msG-Wl-RIW"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="Cancel"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWg-CZ-rQE">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWg-CZ-rQE">
                                         <rect key="frame" x="40" y="510" width="215" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="49" id="Hke-Rg-thE"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Let's go!"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oy2-0U-g4B">
-                                        <rect key="frame" x="247" y="8" width="40" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oy2-0U-g4B">
+                                        <rect key="frame" x="177" y="8" width="110" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="BYv-6d-GwQ"/>
+                                            <constraint firstAttribute="width" constant="110" id="BYv-6d-GwQ"/>
                                             <constraint firstAttribute="height" constant="40" id="gZk-Q8-38g"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="Add a new player"/>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d2R-Tz-UNP">
                                         <rect key="frame" x="0.0" y="56" width="295" height="446"/>
