@@ -9,15 +9,78 @@
 import UIKit
 
 class GameViewController: UIViewController {
-
+    
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var questionView: GameQuestionView! {
+        didSet {
+            questionView.backgroundColor = UIColor.clear
+        }
+    }
+    
+    @IBOutlet weak var acceptButton: UIButton! {
+        didSet {
+            acceptButton.addTarget(self, action: #selector(self.acceptButtonAction), for: .touchUpInside)
+        }
+    }
+    @IBOutlet weak var unacceptButton: UIButton! {
+        didSet {
+            unacceptButton.addTarget(self, action: #selector(self.unacceptButtonAction), for: .touchUpInside)
+        }
+    }
+    @IBOutlet weak var startTimerButton: UIButton! {
+        didSet {
+            startTimerButton.addTarget(self, action: #selector(self.startTimerButtonAction), for: .touchUpInside)
+        }
+    }
+    
     var model: GameModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        model.delegate = self
+        model.setup()
     }
 }
 
 extension GameViewController: StoryboardInstanceable {
     static var storyboardName: StoryboardList = .game
+}
+
+@objc extension GameViewController {
+    private func startTimerButtonAction() {
+        model.startTimer()
+    }
+    private func acceptButtonAction() {
+        model.acceptQuestion()
+    }
+    private func unacceptButtonAction() {
+        model.unacceptQuestion()
+    }
+}
+
+extension GameViewController: GameModelUIDelegate {
+    func setCountDownLabel(_ time: String) {
+        questionView.countDownLabel.text = time
+    }
+    
+    func setTimeIsOver() {
+        questionView.countDownLabel.text = "Time is Over!"
+    }
+    
+    func setPlayerInfo(_ player: Player, question: String) {
+        questionView.questionLabel.text = question
+        questionView.playerNameLabel.text = player.name
+    }
+    
+    func setTitle(_ title: String) {
+        titleLabel.text = title
+    }
+    
+    func roundIsOver(with result: GameResult) {
+        
+    }
+    
+    func gameIsOver(with result: GameResult) {
+        
+    }
 }

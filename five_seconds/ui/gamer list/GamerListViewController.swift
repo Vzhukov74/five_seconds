@@ -106,7 +106,9 @@ extension GamerListViewController: StoryboardInstanceable {
     private func startGameButtonAction() {
         if model.players.count > 1 {
             if let vc = GameViewController.storyboardInstance {
-                vc.model = GameModel(players: model.players)
+                let provider = QuestionProviderEngine()
+                let engine = GameEngine(questionProvider: provider, timerTime: 5)
+                vc.model = GameModel(players: model.players, engine: engine)
                 startGame(with: vc)
             }
         } else {
