@@ -84,8 +84,8 @@ extension GamerListViewController: StoryboardInstanceable {
         
         let addPlayerViewConstrains = [addPlayerView.widthAnchor.constraint(equalToConstant: size.width), addPlayerView.heightAnchor.constraint(equalToConstant: size.height), addPlayerView.centerYAnchor.constraint(equalTo: view.centerYAnchor), addPlayerView.centerXAnchor.constraint(equalTo: view.centerXAnchor)]
         
-        addPlayerView.addPlayerAction = { [weak self] in
-            self?.model.addNewPlayer(with: $0.name, imageKey: $0.imageKey)
+        addPlayerView.addPlayerAction = { [weak self] (name, imageKey) in
+            self?.model.addNewPlayer(with: name, imageKey: imageKey)
         }
         
         addPlayerView.backgroundColor = Colors.mainMenu
@@ -104,11 +104,12 @@ extension GamerListViewController: StoryboardInstanceable {
     }
     
     private func startGameButtonAction() {
-        if model.players.count > 1 {
+        let players = model.chosenPlayers()
+        if players.count > 1 {
             if let vc = GameViewController.storyboardInstance {
                 let provider = QuestionProviderEngine()
                 let engine = GameEngine(questionProvider: provider, timerTime: 5)
-                vc.model = GameModel(players: model.players, engine: engine)
+                vc.model = GameModel(players: players, engine: engine)
                 startGame(with: vc)
             }
         } else {
@@ -135,6 +136,14 @@ extension GamerListViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else {
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? PlayerCell {
+            cell.toggle()
         }
     }
 }

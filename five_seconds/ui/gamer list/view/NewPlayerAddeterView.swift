@@ -20,7 +20,7 @@ class NewPlayerAddeterView: UIView {
     private var name = ""
     private var avatarKey = ""
     
-    var addPlayerAction: ((_ plyer: Player) -> Void)?
+    var addPlayerAction: ((_ name: String, _ imageKey: String) -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -123,7 +123,7 @@ class NewPlayerAddeterView: UIView {
         let _avatarKey = "1"
         
         if !_name.isEmpty, !_avatarKey.isEmpty {
-            addPlayerAction?(Player(name: _name, imageKey: _avatarKey))
+            addPlayerAction?(_name, _avatarKey)
             removeSelf()
         }
     }

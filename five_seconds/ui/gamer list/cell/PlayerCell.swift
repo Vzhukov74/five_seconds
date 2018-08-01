@@ -17,14 +17,30 @@ class PlayerCell: UITableViewCell {
             removeButton.addTarget(self, action: #selector(self.removeButtonAction), for: .touchUpInside)
         }
     }
+    @IBOutlet weak var isChosenImageView: UIImageView! {
+        didSet {
+            isChosenImageView.isHidden = true
+        }
+    }
     
     var removeAction: ((_ index: Int) -> Void)?
     var index: Int?
     var player: Player? {
         didSet {
-            avatarImageView.image = AvatarStore.avatar(for: player!.imageKey)
-            nameLabel.text = player!.name
+            update()
         }
+    }
+    
+    func toggle() {
+        player?.toggle()
+        update()
+    }
+    
+    private func update() {
+        guard let _player = self.player else { return }
+        avatarImageView.image = AvatarStore.avatar(for: _player.avatarKey)
+        nameLabel.text = _player.name
+        isChosenImageView.isHidden = !_player.isChosen
     }
 }
 
