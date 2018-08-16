@@ -15,6 +15,7 @@
 		04285DA02111D57B0087067B /* QuestionCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04285D9E2111D57B0087067B /* QuestionCD+CoreDataClass.swift */; };
 		04285DA12111D57B0087067B /* QuestionCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04285D9F2111D57B0087067B /* QuestionCD+CoreDataProperties.swift */; };
 		04285DA32111DB870087067B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04285DA22111DB870087067B /* Player.swift */; };
+		0450ECE921259E8700604212 /* VZLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450ECE821259E8700604212 /* VZLogger.swift */; };
 		045ED79220FDFDC8004155D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045ED79120FDFDC8004155D2 /* AppDelegate.swift */; };
 		045ED79C20FDFDCC004155D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045ED79B20FDFDCC004155D2 /* Assets.xcassets */; };
 		045ED79F20FDFDCC004155D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045ED79D20FDFDCC004155D2 /* LaunchScreen.storyboard */; };
@@ -55,6 +56,7 @@
 		04285D9E2111D57B0087067B /* QuestionCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "QuestionCD+CoreDataClass.swift"; path = "five_seconds/core data/QuestionCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		04285D9F2111D57B0087067B /* QuestionCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "QuestionCD+CoreDataProperties.swift"; path = "five_seconds/core data/QuestionCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		04285DA22111DB870087067B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		0450ECE821259E8700604212 /* VZLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VZLogger.swift; sourceTree = "<group>"; };
 		045ED78E20FDFDC8004155D2 /* 5second.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 5second.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045ED79120FDFDC8004155D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		045ED79B20FDFDCC004155D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				045ED7BD20FE096F004155D2 /* Extensions.swift */,
+				0450ECE821259E8700604212 /* VZLogger.swift */,
 			);
 			path = developer;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				045ED7D221008BEE004155D2 /* GameModel.swift in Sources */,
 				04658648210B3B7900C45DB7 /* PlayerResult.swift in Sources */,
 				04285D8C2111CFB50087067B /* 5seconds.xcdatamodeld in Sources */,
+				0450ECE921259E8700604212 /* VZLogger.swift in Sources */,
 				04285DA02111D57B0087067B /* QuestionCD+CoreDataClass.swift in Sources */,
 				04658646210B3B6500C45DB7 /* GameResult.swift in Sources */,
 				045ED7AC20FDFEBB004155D2 /* StoryboardList.swift in Sources */,
