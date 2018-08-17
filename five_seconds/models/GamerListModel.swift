@@ -11,8 +11,10 @@ import UIKit
 import CoreData
 
 class AvatarStore {
+    static let avatarKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    
     class func avatar(for key: String) -> UIImage {
-        return UIImage(named: "avatar") ?? UIImage()
+        return UIImage(named: key) ?? UIImage()
     }
 }
 

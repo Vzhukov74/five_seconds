@@ -18,7 +18,7 @@ class NewPlayerAddeterView: UIView {
     private var avatarChoicerView: AvatarChoicerView?
     
     private var name = ""
-    private var avatarKey = ""
+    private var avatarKey = AvatarStore.avatarKeys.last!
     
     var addPlayerAction: ((_ name: String, _ imageKey: String) -> Void)?
     
@@ -120,7 +120,7 @@ class NewPlayerAddeterView: UIView {
     
     private func okButtonAction() {
         let _name = nameInput.text ?? ""
-        let _avatarKey = "1"
+        let _avatarKey = avatarKey
         
         if !_name.isEmpty, !_avatarKey.isEmpty {
             addPlayerAction?(_name, _avatarKey)
@@ -131,7 +131,7 @@ class NewPlayerAddeterView: UIView {
     private func addAvatarAction() {
         let width = self.bounds.width
         
-        let model = AvatarChoicerModel()
+        let model = AvatarChoicerModel(keys: AvatarStore.avatarKeys)
         
         let elementsInRow: CGFloat = CGFloat(Int(width / 50))
         let rows = CGFloat(Int((CGFloat(model.keys.count) / CGFloat(elementsInRow)) + 0.9))
@@ -143,8 +143,9 @@ class NewPlayerAddeterView: UIView {
         avatarChoicerView!.clipsToBounds = true
         avatarChoicerView!.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
-        avatarChoicerView!.didChosenAvatar = { [weak self] in
-            print($0)
+        avatarChoicerView!.didChosenAvatar = { [weak self] (key) in
+            self?.avatarKey = key
+            self?.avatarImageView.image = AvatarStore.avatar(for: key)
         }
         
         addSubview(avatarChoicerView!)
@@ -158,7 +159,7 @@ class NewPlayerAddeterView: UIView {
 }
 
 struct AvatarChoicerModel {
-    let keys = ["test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test",]
+    let keys: [String]
 }
 
 class AvatarChoicerView: UIView {
