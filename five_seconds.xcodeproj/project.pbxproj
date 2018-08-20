@@ -45,6 +45,7 @@
 		04658648210B3B7900C45DB7 /* PlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04658647210B3B7900C45DB7 /* PlayerResult.swift */; };
 		048D4FEC210F128D00C37B59 /* GameQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D4FEB210F128D00C37B59 /* GameQuestionView.swift */; };
 		048D4FEE210F129600C37B59 /* GameQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048D4FED210F129600C37B59 /* GameQuestionView.xib */; };
+		F53D31E72125B77C00AA6CF8 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53D31E62125B77C00AA6CF8 /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		04658647210B3B7900C45DB7 /* PlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerResult.swift; sourceTree = "<group>"; };
 		048D4FEB210F128D00C37B59 /* GameQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameQuestionView.swift; sourceTree = "<group>"; };
 		048D4FED210F129600C37B59 /* GameQuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameQuestionView.xib; sourceTree = "<group>"; };
+		F53D31E62125B77C00AA6CF8 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 		0465863B210B39E900C45DB7 /* interim result */ = {
 			isa = PBXGroup;
 			children = (
+				F53D31E52125B74A00AA6CF8 /* view */,
 				0465863D210B3A2000C45DB7 /* InterimResultViewController.swift */,
 				0465863F210B3A2A00C45DB7 /* InterimResultViewController.storyboard */,
 			);
@@ -289,6 +292,14 @@
 			children = (
 				048D4FEB210F128D00C37B59 /* GameQuestionView.swift */,
 				048D4FED210F129600C37B59 /* GameQuestionView.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F53D31E52125B74A00AA6CF8 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F53D31E62125B77C00AA6CF8 /* ResultView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -376,6 +387,7 @@
 				045ED7C820FE1681004155D2 /* NewPlayerAddeterView.swift in Sources */,
 				045ED7AE20FDFFFA004155D2 /* MenuViewController.swift in Sources */,
 				045ED7CE21008B86004155D2 /* GameViewController.swift in Sources */,
+				F53D31E72125B77C00AA6CF8 /* ResultView.swift in Sources */,
 				04285D922111D0590087067B /* DatabaseHelper.swift in Sources */,
 				045ED7D421008E9A004155D2 /* AlertView.swift in Sources */,
 				04285D992111D1200087067B /* PlayerCD+CoreDataProperties.swift in Sources */,

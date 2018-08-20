@@ -24,11 +24,17 @@ class QuestionProviderEngine: QuestionProvider {
     
     var index: Int = 0
     
+    //to do fix
+    let questions = ["three US presidents", "three actresses of Hollywood"]
+    
     func question() -> Question {
         let question = Question()
-        question.text = "\(index)"
+        question.text = questions[index]
         index += 1
-        return Question()
+        if index == 2 {
+            index = 0
+        }
+        return question
     }
     
     func totalQuestion() -> Int {
@@ -100,6 +106,7 @@ protocol GameModelUIDelegate: class {
     
     func roundIsOver(with result: GameResult)
     func gameIsOver(with result: GameResult)
+    func hideStartButton()
 }
 
 class GameModel {
@@ -157,6 +164,7 @@ class GameModel {
     }
     
     func startTimer() {
+        delegate?.hideStartButton()
         handle()
     }
     
@@ -168,6 +176,7 @@ class GameModel {
         case .setNextPlayer:
             setNextPlayer()
             setQuestion()
+            engine.stopTimer()
             state = .waitStart
         case .waitStart:
             engine.setupTimer()
@@ -184,7 +193,7 @@ class GameModel {
     private func setQuestion() {
         let question = engine.question()
         delegate?.setPlayerInfo(players[currentPlayerIndex], question: question)
-        delegate?.setTitle("round: \(currentRound)")
+        delegate?.setTitle("Round - \(currentRound)")
     }
     
     private func setNextPlayer() {
@@ -198,7 +207,7 @@ class GameModel {
                 return
             }
             currentRound = nextRound
-            delegate?.setTitle("\(currentRound)")
+            delegate?.setTitle("Round - \(currentRound)")
         }
         currentPlayerIndex = nextPlayerIndex
     }

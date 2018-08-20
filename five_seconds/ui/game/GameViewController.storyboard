@@ -21,64 +21,61 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t16-F8-qRA" customClass="BackgroundView" customModule="_second" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Отвечает:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFE-41-0ep">
-                                        <rect key="frame" x="16" y="62" width="343" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlp-4R-1z1">
                                         <rect key="frame" x="195.5" y="545" width="163.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="SRT-SF-fiT"/>
                                         </constraints>
-                                        <state key="normal" title="Yes!"/>
+                                        <state key="normal" title="Yes!">
+                                            <color key="titleColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8D-GB-Llc">
                                         <rect key="frame" x="16" y="545" width="163.5" height="50"/>
-                                        <state key="normal" title="No!"/>
+                                        <state key="normal" title="No!">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Засчитать вопрос?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8F-EX-gLZ">
-                                        <rect key="frame" x="16" y="516" width="343" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="16" y="514" width="343" height="23"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CcR-nx-klN">
-                                        <rect key="frame" x="168" y="478" width="39" height="30"/>
-                                        <state key="normal" title="Start!"/>
+                                        <rect key="frame" x="156" y="466" width="63" height="40"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="24"/>
+                                        <state key="normal" title="Start!">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                     </button>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="211" translatesAutoresizingMaskIntoConstraints="NO" id="s6h-Pp-Zhx" customClass="GameQuestionView" customModule="_second" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="99" width="343" height="211"/>
+                                        <rect key="frame" x="16" y="81" width="343" height="211"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Rlp-4R-1z1" firstAttribute="leading" secondItem="i8D-GB-Llc" secondAttribute="trailing" constant="16" id="0Kg-8h-G4X"/>
-                                    <constraint firstItem="CcR-nx-klN" firstAttribute="leading" secondItem="t16-F8-qRA" secondAttribute="leading" constant="168" id="2CS-1b-tLP"/>
                                     <constraint firstAttribute="bottom" secondItem="i8D-GB-Llc" secondAttribute="bottom" constant="72" id="5h4-Eq-JWI"/>
                                     <constraint firstItem="i8D-GB-Llc" firstAttribute="leading" secondItem="t16-F8-qRA" secondAttribute="leading" constant="16" id="8ae-jB-jKJ"/>
                                     <constraint firstItem="Rlp-4R-1z1" firstAttribute="height" secondItem="i8D-GB-Llc" secondAttribute="height" id="9In-nW-uoY"/>
                                     <constraint firstItem="V8F-EX-gLZ" firstAttribute="top" secondItem="CcR-nx-klN" secondAttribute="bottom" constant="8" id="Cb9-YF-djN"/>
-                                    <constraint firstItem="mFE-41-0ep" firstAttribute="leading" secondItem="t16-F8-qRA" secondAttribute="leading" constant="16" id="DSR-Au-RSA"/>
-                                    <constraint firstItem="s6h-Pp-Zhx" firstAttribute="top" secondItem="mFE-41-0ep" secondAttribute="bottom" constant="16" id="Drz-rp-1XH"/>
+                                    <constraint firstItem="CcR-nx-klN" firstAttribute="centerX" secondItem="t16-F8-qRA" secondAttribute="centerX" id="Fnh-4r-TeG"/>
                                     <constraint firstItem="V8F-EX-gLZ" firstAttribute="leading" secondItem="t16-F8-qRA" secondAttribute="leading" constant="16" id="SwZ-pi-b6S"/>
                                     <constraint firstAttribute="bottom" secondItem="Rlp-4R-1z1" secondAttribute="bottom" constant="72" id="TJv-nO-hDj"/>
                                     <constraint firstAttribute="trailing" secondItem="V8F-EX-gLZ" secondAttribute="trailing" constant="16" id="V1l-zt-m9u"/>
                                     <constraint firstItem="Rlp-4R-1z1" firstAttribute="top" secondItem="V8F-EX-gLZ" secondAttribute="bottom" constant="8" id="VN8-xx-jaO"/>
-                                    <constraint firstAttribute="trailing" secondItem="CcR-nx-klN" secondAttribute="trailing" constant="168" id="YZg-oM-8FK"/>
                                     <constraint firstAttribute="trailing" secondItem="Rlp-4R-1z1" secondAttribute="trailing" constant="16" id="cmz-AA-UbP"/>
-                                    <constraint firstAttribute="trailing" secondItem="mFE-41-0ep" secondAttribute="trailing" constant="16" id="gfo-pn-Np2"/>
                                     <constraint firstItem="i8D-GB-Llc" firstAttribute="width" secondItem="Rlp-4R-1z1" secondAttribute="width" id="htj-z1-F9Y"/>
                                     <constraint firstItem="s6h-Pp-Zhx" firstAttribute="leading" secondItem="t16-F8-qRA" secondAttribute="leading" constant="16" id="z0d-vY-JNQ"/>
                                     <constraint firstAttribute="trailing" secondItem="s6h-Pp-Zhx" secondAttribute="trailing" constant="16" id="zr6-BY-CGT"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="round 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xc-pE-pSI">
-                                <rect key="frame" x="16" y="28" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round - 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xc-pE-pSI">
+                                <rect key="frame" x="16" y="28" width="343" height="23"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -87,8 +84,8 @@
                             <constraint firstItem="t16-F8-qRA" firstAttribute="trailing" secondItem="DiD-9h-448" secondAttribute="trailing" id="6H0-YD-ofs"/>
                             <constraint firstItem="DiD-9h-448" firstAttribute="trailing" secondItem="5xc-pE-pSI" secondAttribute="trailing" constant="16" id="BTJ-2e-J83"/>
                             <constraint firstItem="t16-F8-qRA" firstAttribute="top" secondItem="6UC-0O-Cai" secondAttribute="top" id="Bto-3L-VGm"/>
+                            <constraint firstItem="s6h-Pp-Zhx" firstAttribute="top" secondItem="5xc-pE-pSI" secondAttribute="bottom" constant="30" id="X3m-Ue-SZe"/>
                             <constraint firstItem="5xc-pE-pSI" firstAttribute="top" secondItem="DiD-9h-448" secondAttribute="top" constant="8" id="Z57-8g-v9E"/>
-                            <constraint firstItem="mFE-41-0ep" firstAttribute="top" secondItem="5xc-pE-pSI" secondAttribute="bottom" constant="13" id="lxa-3r-cDf"/>
                             <constraint firstItem="t16-F8-qRA" firstAttribute="bottom" secondItem="DiD-9h-448" secondAttribute="bottom" id="r1c-ia-jsk"/>
                             <constraint firstItem="t16-F8-qRA" firstAttribute="leading" secondItem="DiD-9h-448" secondAttribute="leading" id="rHz-Be-DEN"/>
                             <constraint firstItem="5xc-pE-pSI" firstAttribute="leading" secondItem="DiD-9h-448" secondAttribute="leading" constant="16" id="tsq-ZB-sPC"/>
@@ -97,6 +94,7 @@
                     </view>
                     <connections>
                         <outlet property="acceptButton" destination="Rlp-4R-1z1" id="Bv8-Fv-yv0"/>
+                        <outlet property="acceptOrUnacceptTitleLabel" destination="V8F-EX-gLZ" id="2uY-JE-cHk"/>
                         <outlet property="questionView" destination="s6h-Pp-Zhx" id="KHa-zl-0DM"/>
                         <outlet property="startTimerButton" destination="CcR-nx-klN" id="Zty-RB-ACK"/>
                         <outlet property="titleLabel" destination="5xc-pE-pSI" id="DPV-gf-7Dr"/>

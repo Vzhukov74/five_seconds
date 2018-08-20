@@ -32,6 +32,7 @@ class GameViewController: UIViewController {
             startTimerButton.addTarget(self, action: #selector(self.startTimerButtonAction), for: .touchUpInside)
         }
     }
+    @IBOutlet weak var acceptOrUnacceptTitleLabel: UILabel!
     
     var model: GameModel!
     
@@ -39,6 +40,13 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         model.delegate = self
         model.setup()
+    }
+    
+    private func setupVisibilityOfStartButton(isVisibly: Bool) {
+        startTimerButton.isHidden = !isVisibly
+        acceptButton.isHidden = isVisibly
+        unacceptButton.isHidden = isVisibly
+        acceptOrUnacceptTitleLabel.isHidden = isVisibly
     }
 }
 
@@ -68,8 +76,10 @@ extension GameViewController: GameModelUIDelegate {
     }
     
     func setPlayerInfo(_ player: Player, question: String) {
+        setupVisibilityOfStartButton(isVisibly: true)
         questionView.questionLabel.text = question
         questionView.playerNameLabel.text = player.name
+        questionView.avatarImageView.image = AvatarStore.avatar(for: player.avatarKey)
     }
     
     func setTitle(_ title: String) {
@@ -82,5 +92,9 @@ extension GameViewController: GameModelUIDelegate {
     
     func gameIsOver(with result: GameResult) {
         
+    }
+    
+    func hideStartButton() {
+        setupVisibilityOfStartButton(isVisibly: false)
     }
 }

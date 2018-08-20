@@ -18,6 +18,7 @@ class GameQuestionView: UIView {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var playerNameLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
