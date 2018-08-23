@@ -31,7 +31,8 @@ class ResultView: UIView {
         for index in 0..<result.players.count {
             let color = UIColor.red
             
-            let _layer: CAShapeLayer = CAShapeLayer()
+            let _layer1: CAShapeLayer = CAShapeLayer()
+            let _layer2: CAShapeLayer = CAShapeLayer()
             
             let height: CGFloat = columnHeightSpan * CGFloat(result.players[index].result)
             let y: CGFloat = frame.height - height
@@ -39,13 +40,20 @@ class ResultView: UIView {
             let start = UIBezierPath(rect: CGRect(x: x, y: y, width: columnWidth, height: 0))
             let end = UIBezierPath(rect: CGRect(x: x, y: y, width: columnWidth, height: height))
             
-            _layer.fillColor = color.cgColor
-            _layer.strokeColor = color.cgColor
-            _layer.backgroundColor = UIColor.clear.cgColor
+            _layer1.fillColor = color.cgColor
+            _layer1.strokeColor = UIColor.clear.cgColor
+            _layer1.backgroundColor = UIColor.clear.cgColor
+            _layer1.path = end.cgPath
             
-            let animation = self.animation(start: start.cgPath, end: end.cgPath)
-            _layer.add(animation, forKey: "animation")
-            layer.addSublayer(_layer)
+            _layer2.fillColor = UIColor.white.cgColor
+            _layer2.strokeColor = UIColor.white.cgColor
+            _layer2.backgroundColor = UIColor.white.cgColor
+            _layer2.path = start.cgPath
+            
+            let animation = self.animation(start: end.cgPath, end: start.cgPath)
+            _layer2.add(animation, forKey: "animation")
+            layer.addSublayer(_layer1)
+            layer.addSublayer(_layer2)
             
             x += columnWidth + space
         }
@@ -62,7 +70,7 @@ class ResultView: UIView {
         lineWidthAnimation.keyTimes = [0.0, 1.0]
         
         let animation = CAAnimationGroup()
-        animation.repeatCount = 2//Float.infinity
+        animation.repeatCount = 1
         animation.isRemovedOnCompletion = false
         animation.duration = kAnimationDuration
         animation.beginTime = beginTime
