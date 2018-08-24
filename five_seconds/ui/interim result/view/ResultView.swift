@@ -10,29 +10,25 @@ import UIKit
 
 class ResultView: UIView {
     
-    fileprivate let strokeEndTimingFunction   = CAMediaTimingFunction(controlPoints: 1.00, 0.0, 0.35, 1.0)
-    fileprivate let squareLayerTimingFunction      = CAMediaTimingFunction(controlPoints: 0.25, 0.0, 0.20, 1.0)
-    fileprivate let circleLayerTimingFunction   = CAMediaTimingFunction(controlPoints: 0.65, 0.0, 0.40, 1.0)
-    fileprivate let fadeInSquareTimingFunction = CAMediaTimingFunction(controlPoints: 0.15, 0, 0.85, 1.0)
-    let kAnimationDuration: TimeInterval = 3.0
-    let kAnimationDurationDelay: TimeInterval = 0.5
-    let kAnimationTimeOffset: CFTimeInterval = 0.35 * 3.0
-    let kRippleMagnitudeMultiplier: CGFloat = 0.025
-    var beginTime: CFTimeInterval = 0
-    
+    let animationDuration: CFTimeInterval = 2.5
+
     func showResult(for result: GameResult) {
         layer.sublayers = nil
         
         var x: CGFloat = 20
         let space: CGFloat = 10
         let columnWidth = (bounds.width - space * CGFloat(result.players.count) - CGFloat(2) * x) / CGFloat(result.players.count)
-        let columnHeightSpan = (bounds.height - CGFloat(40)) / CGFloat(10)
+        let columnHeightSpan = (bounds.height - CGFloat(10) - columnWidth) / CGFloat(10)
         
         for index in 0..<result.players.count {
             let color = UIColor.red
             
-            let _layer1: CAShapeLayer = CAShapeLayer()
-            let _layer2: CAShapeLayer = CAShapeLayer()
+            let _avatarLayer = avatarLayer(for: result.players[index].player, index: index, color: color)
+            let _nameLayer = nameLayer(for: result.players[index].player, index: index, color: color)
+            let _resultLayer = resultLayer(for: result.players[index].result)
+            
+            let _resultLayer1: CAShapeLayer = CAShapeLayer()
+            let _resultLayer2: CAShapeLayer = CAShapeLayer()
             
             let height: CGFloat = columnHeightSpan * CGFloat(result.players[index].result)
             let y: CGFloat = frame.height - height
@@ -40,43 +36,104 @@ class ResultView: UIView {
             let start = UIBezierPath(rect: CGRect(x: x, y: y, width: columnWidth, height: 0))
             let end = UIBezierPath(rect: CGRect(x: x, y: y, width: columnWidth, height: height))
             
-            _layer1.fillColor = color.cgColor
-            _layer1.strokeColor = UIColor.clear.cgColor
-            _layer1.backgroundColor = UIColor.clear.cgColor
-            _layer1.path = end.cgPath
+            let avatarLayerStartY: CGFloat = (frame.height - columnWidth - 10)
+            let avatarLayerEndY: CGFloat = (y - columnWidth - 10)
+            _avatarLayer.frame = CGRect(x: x, y: avatarLayerEndY, width: columnWidth, height: columnWidth)
             
-            _layer2.fillColor = UIColor.white.cgColor
-            _layer2.strokeColor = UIColor.white.cgColor
-            _layer2.backgroundColor = UIColor.white.cgColor
-            _layer2.path = start.cgPath
+            let nameLayerStartY: CGFloat = (frame.height - 10)
+            let nameLayerEndY: CGFloat = (y - 10)
+            _nameLayer.frame = CGRect(x: x, y: nameLayerEndY, width: columnWidth, height: 15)
+            
+            _resultLayer.frame = CGRect(x: x, y: (frame.height - 20), width: columnWidth, height: 15)
+            
+            _resultLayer1.fillColor = color.cgColor
+            _resultLayer1.strokeColor = UIColor.clear.cgColor
+            _resultLayer1.backgroundColor = UIColor.clear.cgColor
+            _resultLayer1.path = end.cgPath
+            
+            _resultLayer2.fillColor = UIColor.white.cgColor
+            _resultLayer2.strokeColor = UIColor.white.cgColor
+            _resultLayer2.backgroundColor = UIColor.white.cgColor
+            _resultLayer2.path = start.cgPath
             
             let animation = self.animation(start: end.cgPath, end: start.cgPath)
-            _layer2.add(animation, forKey: "animation")
-            layer.addSublayer(_layer1)
-            layer.addSublayer(_layer2)
+            _resultLayer2.add(animation, forKey: "animation")
+            
+            let avatarAnimation = self.avatarAnimation(start: avatarLayerStartY, end: avatarLayerEndY)
+            _avatarLayer.add(avatarAnimation, forKey: "avataranimation")
+            
+            let nameAnimation = self.nameAnimation(start: nameLayerStartY, end: nameLayerEndY)
+            _nameLayer.add(nameAnimation, forKey: "nameAnimation")
+            
+            layer.addSublayer(_resultLayer1)
+            layer.addSublayer(_resultLayer2)
+            layer.addSublayer(_avatarLayer)
+            layer.addSublayer(_nameLayer)
+            layer.addSublayer(_resultLayer)
             
             x += columnWidth + space
         }
     }
     
     private func animation(start: CGPath, end: CGPath) -> CAAnimation {
-        //animation
-        let startTimeOffset = 0.7 * kAnimationDuration
+        let basicAnimation = CABasicAnimation(keyPath: "path")
+        basicAnimation.fromValue = start
+        basicAnimation.toValue = end
+        basicAnimation.duration = animationDuration
+        basicAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
-        let lineWidthAnimation = CAKeyframeAnimation(keyPath: "path")
-        lineWidthAnimation.values = [start, end]
-        lineWidthAnimation.timingFunctions = [strokeEndTimingFunction, circleLayerTimingFunction]
-        lineWidthAnimation.duration = kAnimationDuration
-        lineWidthAnimation.keyTimes = [0.0, 1.0]
+        return basicAnimation
+    }
+    
+    private func avatarAnimation(start: CGFloat, end: CGFloat) -> CAAnimation {
+        let basicAnimation = CABasicAnimation(keyPath: "position.y")
+        basicAnimation.fromValue = start
+        basicAnimation.toValue = end
+        basicAnimation.duration = animationDuration
+        basicAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
-        let animation = CAAnimationGroup()
-        animation.repeatCount = 1
-        animation.isRemovedOnCompletion = false
-        animation.duration = kAnimationDuration
-        animation.beginTime = beginTime
-        animation.animations = [lineWidthAnimation]
-        animation.timeOffset = startTimeOffset
+        return basicAnimation
+    }
+    
+    private func nameAnimation(start: CGFloat, end: CGFloat) -> CABasicAnimation {
+        let basicAnimation = CABasicAnimation(keyPath: "position.y")
+        basicAnimation.fromValue = start
+        basicAnimation.toValue = end
+        basicAnimation.duration = animationDuration
+        basicAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
-        return animation
+        return basicAnimation
+    }
+    
+    //avatars
+    private func avatarLayer(for player: Player, index: Int, color: UIColor) -> CAShapeLayer  {
+        let avatar = AvatarStore.avatar(for: player.avatarKey)
+        let _layer = CAShapeLayer()
+        _layer.contents = avatar.cgImage
+        _layer.fillColor = UIColor.blue.cgColor
+        
+        return _layer
+    }
+    
+    private func nameLayer(for player: Player, index: Int, color: UIColor) -> CATextLayer {
+        let _layer = CATextLayer()
+        _layer.string = player.name
+        _layer.font = UIFont.systemFont(ofSize: 10)
+        _layer.fontSize = 10
+        _layer.foregroundColor = UIColor.brown.cgColor
+        _layer.alignmentMode = "center"
+        
+        return _layer
+    }
+    
+    private func resultLayer(for result: Int) -> CATextLayer {
+        let _layer = CATextLayer()
+        _layer.string = String(result)
+        _layer.font = UIFont.systemFont(ofSize: 10)
+        _layer.fontSize = 10
+        _layer.foregroundColor = UIColor.white.cgColor
+        _layer.alignmentMode = "center"
+        
+        return _layer
     }
 }

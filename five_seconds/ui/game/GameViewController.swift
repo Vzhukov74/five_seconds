@@ -47,8 +47,16 @@ class GameViewController: UIViewController {
             let player2 = PlayerResult(player: Player(name: "123", avatarKey: "2"), result: 1)
             let player3 = PlayerResult(player: Player(name: "1e23", avatarKey: "3"), result: 5)
             let player4 = PlayerResult(player: Player(name: "12e3", avatarKey: "4"), result: 10)
+            let player5 = PlayerResult(player: Player(name: "12", avatarKey: "1"), result: 2)
+            let player6 = PlayerResult(player: Player(name: "123", avatarKey: "2"), result: 1)
+            let player7 = PlayerResult(player: Player(name: "1e23", avatarKey: "3"), result: 5)
+//            let player8 = PlayerResult(player: Player(name: "12e3", avatarKey: "4"), result: 10)
+//            let player9 = PlayerResult(player: Player(name: "12", avatarKey: "1"), result: 2)
+//            let player10 = PlayerResult(player: Player(name: "123", avatarKey: "2"), result: 1)
+//            let player11 = PlayerResult(player: Player(name: "1e23", avatarKey: "3"), result: 5)
+//            let player12 = PlayerResult(player: Player(name: "12e3", avatarKey: "4"), result: 10)
             
-            vc.model = GameResult(players: [player1, player2, player3, player4])
+            vc.model = GameResult(players: [player1, player2, player3, player4, player5, player6, player7/*, player8, player9, player10, player11, player12*/])
             vc.currentRound = 1
             present(vc, animated: true, completion: nil)
         }
