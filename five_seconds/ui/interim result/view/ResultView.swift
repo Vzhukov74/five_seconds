@@ -12,6 +12,8 @@ class ResultView: UIView {
     
     let animationDuration: CFTimeInterval = 2.5
 
+    let resultColumnColors = [UIColor.red, UIColor.blue, UIColor.cyan, UIColor.brown, UIColor.darkGray]
+    
     func showResult(for result: GameResult) {
         layer.sublayers = nil
         
@@ -21,7 +23,7 @@ class ResultView: UIView {
         let columnHeightSpan = (bounds.height - CGFloat(10) - columnWidth) / CGFloat(10)
         
         for index in 0..<result.players.count {
-            let color = UIColor.red
+            let color = self.color(for: index)
             
             let _avatarLayer = avatarLayer(for: result.players[index].player, index: index, color: color)
             let _nameLayer = nameLayer(for: result.players[index].player, index: index, color: color)
@@ -64,6 +66,21 @@ class ResultView: UIView {
             layer.addSublayer(_resultLabelLayer)
             
             x += columnWidth + space
+        }
+    }
+    
+    // color
+    private func color(for index: Int) -> UIColor {
+        if index < resultColumnColors.count {
+            return resultColumnColors[index]
+        } else {
+            var newIndex = index
+            while newIndex > resultColumnColors.count {
+                newIndex = index - resultColumnColors.count
+            }
+            guard newIndex < resultColumnColors.count else { return resultColumnColors[0] }
+            
+            return resultColumnColors[newIndex]
         }
     }
     

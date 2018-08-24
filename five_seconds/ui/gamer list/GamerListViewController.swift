@@ -58,11 +58,11 @@ class GamerListViewController: UIViewController {
     }
     
     private func showAlert() {
-        let alert = AlertView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
+        let alert = AlertView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 120)))
         alert.clipsToBounds = true
         alert.cornerRadius = 25
         alert.backgroundColor = UIColor.lightGray
-        alert.show(on: mainView)
+        alert.show(on: mainView, with: "For game needed minimum two players!")
     }
 }
 
