@@ -25,16 +25,14 @@ class ResultView: UIView {
             
             let _avatarLayer = avatarLayer(for: result.players[index].player, index: index, color: color)
             let _nameLayer = nameLayer(for: result.players[index].player, index: index, color: color)
-            let _resultLayer = resultLayer(for: result.players[index].result)
-            
-            let _resultLayer1: CAShapeLayer = CAShapeLayer()
-            let _resultLayer2: CAShapeLayer = CAShapeLayer()
+            let _resultLabelLayer = resultLabelLayer(for: result.players[index].result)
+            let _resultLayer: CAShapeLayer = CAShapeLayer()
             
             let height: CGFloat = columnHeightSpan * CGFloat(result.players[index].result)
             let y: CGFloat = frame.height - height
 
-            let start = UIBezierPath(rect: CGRect(x: x, y: y, width: columnWidth, height: 0))
-            let end = UIBezierPath(rect: CGRect(x: x, y: y, width: columnWidth, height: height))
+            let start = UIBezierPath(rect: CGRect(x: x, y: 0, width: columnWidth, height: 0))
+            let end = UIBezierPath(rect: CGRect(x: x, y: 0, width: columnWidth, height: height))
             
             let avatarLayerStartY: CGFloat = (frame.height - columnWidth - 10)
             let avatarLayerEndY: CGFloat = (y - columnWidth - 10)
@@ -44,20 +42,15 @@ class ResultView: UIView {
             let nameLayerEndY: CGFloat = (y - 10)
             _nameLayer.frame = CGRect(x: x, y: nameLayerEndY, width: columnWidth, height: 15)
             
-            _resultLayer.frame = CGRect(x: x, y: (frame.height - 20), width: columnWidth, height: 15)
+            _resultLabelLayer.frame = CGRect(x: x, y: (frame.height - 20), width: columnWidth, height: 15)
             
-            _resultLayer1.fillColor = color.cgColor
-            _resultLayer1.strokeColor = UIColor.clear.cgColor
-            _resultLayer1.backgroundColor = UIColor.clear.cgColor
-            _resultLayer1.path = end.cgPath
+            _resultLayer.fillColor = color.cgColor
+            _resultLayer.strokeColor = UIColor.clear.cgColor
+            _resultLayer.backgroundColor = UIColor.clear.cgColor
+            _resultLayer.path = UIBezierPath(rect: CGRect(x: x, y: y, width: columnWidth, height: height)).cgPath
             
-            _resultLayer2.fillColor = UIColor.white.cgColor
-            _resultLayer2.strokeColor = UIColor.white.cgColor
-            _resultLayer2.backgroundColor = UIColor.white.cgColor
-            _resultLayer2.path = start.cgPath
-            
-            let animation = self.animation(start: end.cgPath, end: start.cgPath)
-            _resultLayer2.add(animation, forKey: "animation")
+            let animation = self.resultAnimation(startPath: start.cgPath, endPath: end.cgPath, startY: frame.height, endY: y)
+            _resultLayer.add(animation, forKey: "resultanimation")
             
             let avatarAnimation = self.avatarAnimation(start: avatarLayerStartY, end: avatarLayerEndY)
             _avatarLayer.add(avatarAnimation, forKey: "avataranimation")
@@ -65,24 +58,36 @@ class ResultView: UIView {
             let nameAnimation = self.nameAnimation(start: nameLayerStartY, end: nameLayerEndY)
             _nameLayer.add(nameAnimation, forKey: "nameAnimation")
             
-            layer.addSublayer(_resultLayer1)
-            layer.addSublayer(_resultLayer2)
+            layer.addSublayer(_resultLayer)
             layer.addSublayer(_avatarLayer)
             layer.addSublayer(_nameLayer)
-            layer.addSublayer(_resultLayer)
+            layer.addSublayer(_resultLabelLayer)
             
             x += columnWidth + space
         }
     }
     
-    private func animation(start: CGPath, end: CGPath) -> CAAnimation {
-        let basicAnimation = CABasicAnimation(keyPath: "path")
-        basicAnimation.fromValue = start
-        basicAnimation.toValue = end
-        basicAnimation.duration = animationDuration
-        basicAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    // animations
+    private func resultAnimation(startPath: CGPath, endPath: CGPath, startY: CGFloat, endY: CGFloat) -> CAAnimationGroup {
+        let basicAnimation1 = CABasicAnimation(keyPath: "path")
+        basicAnimation1.fromValue = startPath
+        basicAnimation1.toValue = endPath
+        basicAnimation1.duration = animationDuration
+        basicAnimation1.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
-        return basicAnimation
+        let basicAnimation2 = CABasicAnimation(keyPath: "position.y")
+        basicAnimation2.fromValue = startY
+        basicAnimation2.toValue = endY
+        basicAnimation2.duration = animationDuration
+        basicAnimation2.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+        let group = CAAnimationGroup()
+        group.animations = [basicAnimation1, basicAnimation2]
+        group.repeatCount = 1
+        group.isRemovedOnCompletion = false
+        group.duration = animationDuration
+
+        return group
     }
     
     private func avatarAnimation(start: CGFloat, end: CGFloat) -> CAAnimation {
@@ -105,7 +110,7 @@ class ResultView: UIView {
         return basicAnimation
     }
     
-    //avatars
+    // layers
     private func avatarLayer(for player: Player, index: Int, color: UIColor) -> CAShapeLayer  {
         let avatar = AvatarStore.avatar(for: player.avatarKey)
         let _layer = CAShapeLayer()
@@ -118,21 +123,25 @@ class ResultView: UIView {
     private func nameLayer(for player: Player, index: Int, color: UIColor) -> CATextLayer {
         let _layer = CATextLayer()
         _layer.string = player.name
-        _layer.font = UIFont.systemFont(ofSize: 10)
-        _layer.fontSize = 10
-        _layer.foregroundColor = UIColor.brown.cgColor
+        _layer.font = UIFont(name: "Helvetica Neue Light", size: 12)
+        _layer.fontSize = 12
+        _layer.foregroundColor = UIColor.white.cgColor
+        _layer.backgroundColor = UIColor.clear.cgColor
         _layer.alignmentMode = "center"
+        _layer.display()
         
         return _layer
     }
     
-    private func resultLayer(for result: Int) -> CATextLayer {
+    private func resultLabelLayer(for result: Int) -> CATextLayer {
         let _layer = CATextLayer()
         _layer.string = String(result)
-        _layer.font = UIFont.systemFont(ofSize: 10)
-        _layer.fontSize = 10
+        _layer.font = UIFont(name: "Helvetica Neue Light", size: 24)
+        _layer.fontSize = 24
         _layer.foregroundColor = UIColor.white.cgColor
+        _layer.backgroundColor = UIColor.clear.cgColor
         _layer.alignmentMode = "center"
+        _layer.display()
         
         return _layer
     }
