@@ -14,34 +14,43 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var startButton: UIButton! {
         didSet {
-            startButton.isHidden = true
+            startButton.alpha = 0
             startButton.addTarget(self, action: #selector(self.startButtonAction), for: .touchUpInside)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         navigationController?.navigationBar.isHidden = true
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        startButton.isHidden = false
+        appearAnimation()
+    }
+    
+    private func appearAnimation() {
         backgroundView.setupAnimation()
+        UIView.animate(withDuration: 0.5) {
+            self.startButton.alpha = 1
+        }
     }
 }
 
 @objc extension MenuViewController {
     private func startButtonAction() {
         if let vc = GamerListViewController.storyboardInstance {
-            startButton.isHidden = true
+            UIView.animate(withDuration: 0.3) {
+                self.startButton.alpha = 0
+            }
             vc.modalTransitionStyle = .flipHorizontal
             vc.modalPresentationStyle = .overCurrentContext
             vc.model = GamerListModel()
             vc.startGame = { [weak self] (vc) in
                 self?.navigationController?.pushViewController(vc, animated: true)
+            }
+            vc.didDismiss = { [weak self] in
+                self?.appearAnimation()
             }
             present(vc, animated: true, completion: nil)
         }

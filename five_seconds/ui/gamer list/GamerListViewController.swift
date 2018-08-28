@@ -42,6 +42,7 @@ class GamerListViewController: UIViewController {
     
     var model: GamerListModel!
     var startGame: ((_ vc: UIViewController) -> Void)?
+    var didDismiss: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,7 @@ extension GamerListViewController: StoryboardInstanceable {
 
 @objc extension GamerListViewController {
     private func cancelButtonAction() {
+        didDismiss?()
         dismiss(animated: true, completion: nil)
     }
     
