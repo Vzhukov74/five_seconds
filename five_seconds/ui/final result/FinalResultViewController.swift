@@ -10,6 +10,21 @@ import UIKit
 
 class FinalResultViewController: UIViewController {
 
+    @IBOutlet weak var finishGameButton: UIButton! {
+        didSet {
+            finishGameButton.addTarget(self, action: #selector(self.finishGameButtonAction), for: .touchUpInside)
+        }
+    }
+    
+    @IBOutlet weak var playAgainButton: UIButton! {
+        didSet {
+            playAgainButton.addTarget(self, action: #selector(self.playAgainButtonAction), for: .touchUpInside)
+        }
+    }
+    
+    var model: GameResult!
+    var completion: ((_ isNeedRestart: Bool) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,4 +38,16 @@ class FinalResultViewController: UIViewController {
 
 extension FinalResultViewController: StoryboardInstanceable {
     static var storyboardName: StoryboardList = .finalResult
+}
+
+@objc extension FinalResultViewController {
+    private func finishGameButtonAction() {
+        completion?(false)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func playAgainButtonAction() {
+        completion?(true)
+        dismiss(animated: true, completion: nil)
+    }
 }

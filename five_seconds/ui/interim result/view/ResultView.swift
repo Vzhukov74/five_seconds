@@ -109,15 +109,13 @@ class ResultView: UIView {
         let avatar = AvatarStore.avatar(for: player.avatarKey)
         let _layer = CAShapeLayer()
         _layer.contents = avatar.cgImage
-        _layer.fillColor = UIColor.blue.cgColor
-        
         return _layer
     }
     
     private func nameLayer(for player: Player, index: Int, color: UIColor) -> CATextLayer {
         let _layer = CATextLayer()
         let attributes = [
-            NSAttributedStringKey.font: UIFont(name: "Helvetica Neue", size: 12.0)!,
+            NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Light", size: 12.0)!,
             NSAttributedStringKey.foregroundColor: UIColor.white
         ]
         let attributedString = NSAttributedString(string: player.name, attributes: attributes)
@@ -131,7 +129,7 @@ class ResultView: UIView {
     private func resultLabelLayer(for result: Int) -> CATextLayer {
         let _layer = CATextLayer()
         let attributes = [
-            NSAttributedStringKey.font: UIFont(name: "Helvetica Neue", size: 18.0)!,
+            NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Light", size: 18.0)!,
             NSAttributedStringKey.foregroundColor: UIColor.white
         ]
         let attributedString = NSAttributedString(string: String(result), attributes: attributes)

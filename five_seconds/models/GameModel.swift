@@ -122,7 +122,6 @@ class GameModel {
     private let engine: GameEngine
     private let players: [Player]
     private(set) var result: GameResult
-    let totalRounds: Int = 9
     private(set) var currentRound: Int = 1
     private(set) var currentPlayerIndex: Int = 0
     private var state: GameState = .initial
@@ -146,6 +145,17 @@ class GameModel {
         engine.updateTime = { [weak self] (time) in
             self?.delegate?.setCountDownLabel("\(time)")
         }
+    }
+    
+    func reset() {
+        for index in 0..<result.players.count {
+            result.players[index].result = 0
+        }
+        currentRound = 1
+        currentPlayerIndex = 0
+        delegate?.setCountDownLabel("5")
+        state = .initial
+        setup()
     }
     
     func setup() {
@@ -202,10 +212,6 @@ class GameModel {
             nextPlayerIndex = 0
             roundIsOver()
             let nextRound = currentRound + 1
-            if nextRound > totalRounds {
-                gameIsOver()
-                return
-            }
             currentRound = nextRound
             delegate?.setTitle("Round - \(currentRound)")
         }
@@ -218,6 +224,13 @@ class GameModel {
     }
     
     private func roundIsOver() {
+        result.players.forEach {
+            if $0.result == 10 {
+               gameIsOver()
+                return
+            }
+        }
+        
         self.delegate?.roundIsOver(with: result)
     }
 }

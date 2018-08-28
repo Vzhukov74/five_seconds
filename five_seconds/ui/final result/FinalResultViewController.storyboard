@@ -10,16 +10,67 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Final Result View Controller-->
         <scene sceneID="X86-yL-0P7">
             <objects>
-                <viewController id="xgD-JM-bWc" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Joe-Iv-dKw">
+                <viewController storyboardIdentifier="FinalResultViewController" id="xgD-JM-bWc" customClass="FinalResultViewController" customModule="_second" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Joe-Iv-dKw" customClass="BackgroundView" customModule="_second" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20w-bN-pzS">
+                                <rect key="frame" x="40" y="597" width="295" height="50"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.56862745100000001" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="F7a-Oe-CC2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Play Again"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yux-Pr-8ec">
+                                <rect key="frame" x="40" y="539" width="295" height="50"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.56862745100000001" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1xg-bL-vEI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Finish Game"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjH-cg-fYu">
+                                <rect key="frame" x="20" y="35" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.38823529411764707" green="0.28627450980392155" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="EjH-cg-fYu" firstAttribute="leading" secondItem="SZW-aE-hHo" secondAttribute="leading" constant="20" id="4cj-sB-Fiy"/>
+                            <constraint firstItem="SZW-aE-hHo" firstAttribute="trailing" secondItem="20w-bN-pzS" secondAttribute="trailing" constant="40" id="KQJ-NA-it4"/>
+                            <constraint firstItem="SZW-aE-hHo" firstAttribute="bottom" secondItem="20w-bN-pzS" secondAttribute="bottom" constant="20" id="OMb-j4-cVw"/>
+                            <constraint firstItem="EjH-cg-fYu" firstAttribute="top" secondItem="SZW-aE-hHo" secondAttribute="top" constant="15" id="PqN-VR-hrC"/>
+                            <constraint firstItem="SZW-aE-hHo" firstAttribute="trailing" secondItem="EjH-cg-fYu" secondAttribute="trailing" constant="20" id="RBo-EA-jG6"/>
+                            <constraint firstItem="SZW-aE-hHo" firstAttribute="trailing" secondItem="Yux-Pr-8ec" secondAttribute="trailing" constant="40" id="bJl-SG-cpW"/>
+                            <constraint firstItem="20w-bN-pzS" firstAttribute="top" secondItem="Yux-Pr-8ec" secondAttribute="bottom" constant="8" id="h5a-Ol-G5M"/>
+                            <constraint firstItem="Yux-Pr-8ec" firstAttribute="leading" secondItem="SZW-aE-hHo" secondAttribute="leading" constant="40" id="n1z-f6-LeM"/>
+                            <constraint firstItem="20w-bN-pzS" firstAttribute="leading" secondItem="SZW-aE-hHo" secondAttribute="leading" constant="40" id="qLk-hI-Bga"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="SZW-aE-hHo"/>
                     </view>
+                    <connections>
+                        <outlet property="finishGameButton" destination="Yux-Pr-8ec" id="nhe-Yd-0ug"/>
+                        <outlet property="playAgainButton" destination="20w-bN-pzS" id="SnJ-oW-ZE2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIg-di-OJo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
