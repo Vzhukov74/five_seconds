@@ -77,10 +77,16 @@ class NewPlayerAddeterView: UIView {
     }
     
     private func setupElements() {
-        nameInput.placeholder = "Enter the name"
+        var myMutableStringTitle = NSMutableAttributedString()
+        let placeholderStr  = "Enter the name"
+        
+        myMutableStringTitle = NSMutableAttributedString(string: placeholderStr, attributes: [NSAttributedStringKey.font : UIFont(name: "Helvetica Neue", size: 14.0)!]) // Font
+        myMutableStringTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(red: 166/255, green: 166/255, blue: 166/255, alpha: 0.9), range: NSRange(location:0,length:placeholderStr.count))
+        nameInput.attributedPlaceholder = myMutableStringTitle
         nameInput.font = UIFont(name: "Helvetica Neue", size: 14)!
         nameInput.tintColor = UIColor.white
         nameInput.textColor = UIColor.white
+
         
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.tintColor = UIColor.white
@@ -94,7 +100,8 @@ class NewPlayerAddeterView: UIView {
         avatarImageView.cornerRadius = 25
         avatarImageView.clipsToBounds = true
         
-        avatarImageView.image = AvatarStore.avatar(for: "add_photo")
+        avatarImageView.image = AvatarStore.avatar(for: "choose_avatar")
+        avatarImageView.tintColor = UIColor(red: 166/255, green: 166/255, blue: 166/255, alpha: 0.9)
         avatarImageView.isUserInteractionEnabled = true
         avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.addAvatarAction)))
     }
@@ -146,6 +153,7 @@ class NewPlayerAddeterView: UIView {
         avatarChoicerView!.didChosenAvatar = { [weak self] (key) in
             self?.avatarKey = key
             self?.avatarImageView.image = AvatarStore.avatar(for: key)
+            self?.avatarImageView.tintColor = UIColor.white
         }
         
         addSubview(avatarChoicerView!)
@@ -264,7 +272,8 @@ class AvatarChoicerCell: UICollectionViewCell {
     
     var avatarKey: String? {
         didSet {
-           avatar.image = AvatarStore.avatar(for: avatarKey!)
+            avatar.tintColor = UIColor(red: 166/255, green: 166/255, blue: 166/255, alpha: 0.9)
+            avatar.image = AvatarStore.avatar(for: avatarKey!)
         }
     }
 }

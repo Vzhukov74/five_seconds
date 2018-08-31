@@ -19,7 +19,7 @@ class PlayerCell: UITableViewCell {
     }
     @IBOutlet weak var isChosenImageView: UIImageView! {
         didSet {
-            isChosenImageView.isHidden = true
+            isChosenImageView.tintColor = UIColor(red: 166/255, green: 166/255, blue: 166/255, alpha: 0.9)
         }
     }
     
@@ -38,9 +38,10 @@ class PlayerCell: UITableViewCell {
     
     private func update() {
         guard let _player = self.player else { return }
+        avatarImageView.tintColor = UIColor.white
         avatarImageView.image = AvatarStore.avatar(for: _player.avatarKey)
         nameLabel.text = _player.name
-        isChosenImageView.isHidden = !_player.isChosen
+        isChosenImageView.tintColor = _player.isChosen ? UIColor.white : UIColor(red: 166/255, green: 166/255, blue: 166/255, alpha: 0.9)
     }
 }
 

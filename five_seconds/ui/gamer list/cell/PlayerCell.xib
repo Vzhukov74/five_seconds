@@ -43,6 +43,8 @@
                             <constraint firstAttribute="width" constant="40" id="6nv-4w-IXC"/>
                             <constraint firstAttribute="height" constant="40" id="hMk-Gd-Saf"/>
                         </constraints>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" image="remove"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="20"/>
@@ -52,7 +54,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="nFN-fn-WtO">
                         <rect key="frame" x="290" y="18" width="14" height="14"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.65098039215686276" green="0.65098039215686276" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="14" id="EzV-Iw-4kb"/>
                             <constraint firstAttribute="height" constant="14" id="amb-Ol-Bja"/>
@@ -86,5 +88,6 @@
     <resources>
         <image name="avatar" width="624" height="468"/>
         <image name="checkmark" width="19" height="15"/>
+        <image name="remove" width="11" height="13"/>
     </resources>
 </document>
