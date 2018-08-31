@@ -8,47 +8,47 @@
 
 import Foundation
 
-class Question {
-    let id: Int = 0
-    var text: String = ""
-    let counter: Int = 0
-}
+//class Question {
+//    let id: Int = 0
+//    var text: String = ""
+//    let counter: Int = 0
+//}
 
 protocol QuestionProvider: class {
-    func question() -> Question
+    func question() -> QuestionCD
     func totalQuestion() -> Int
-    func increaseCounter(for question: Question)
+    func increaseCounter(for question: QuestionCD)
 }
 
-class QuestionProviderEngine: QuestionProvider {
-    
-    var index: Int = 0
-    
-    //to do fix
-    let questions = ["three US presidents", "three actresses of Hollywood"]
-    
-    func question() -> Question {
-        let question = Question()
-        question.text = questions[index]
-        index += 1
-        if index == 2 {
-            index = 0
-        }
-        return question
-    }
-    
-    func totalQuestion() -> Int {
-        return 0
-    }
-    
-    func increaseCounter(for question: Question) {
-        
-    }
-}
+//class QuestionProviderEngine: QuestionProvider {
+//
+//    var index: Int = 0
+//
+//    //to do fix
+//    let questions = ["three US presidents", "three actresses of Hollywood"]
+//
+//    func question() -> QuestionCD {
+//        let question = Question()
+//        question.text = questions[index]
+//        index += 1
+//        if index == 2 {
+//            index = 0
+//        }
+//        return question
+//    }
+//
+//    func totalQuestion() -> Int {
+//        return 0
+//    }
+//
+//    func increaseCounter(for question: Question) {
+//
+//    }
+//}
 
 class GameEngine {
     private let questionProvider: QuestionProvider
-    private(set) var currentQuestion: Question!
+    private(set) var currentQuestion: QuestionCD!
     private var timer: Timer?
     private var countDown: Int = 0
     let timerTime: Int
@@ -63,7 +63,7 @@ class GameEngine {
     
     func question() -> String {
         self.currentQuestion = questionProvider.question()
-        return currentQuestion.text
+        return currentQuestion.text ?? ""
     }
     
     func setupTimer() {

@@ -48,6 +48,9 @@
 		046701FA2136E04C00B18B94 /* AvatarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701F92136E04C00B18B94 /* AvatarStore.swift */; };
 		048D4FEC210F128D00C37B59 /* GameQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D4FEB210F128D00C37B59 /* GameQuestionView.swift */; };
 		048D4FEE210F129600C37B59 /* GameQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048D4FED210F129600C37B59 /* GameQuestionView.xib */; };
+		04B4D7E02139523F0018B98D /* CoreDataInitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4D7DF2139523F0018B98D /* CoreDataInitHelper.swift */; };
+		04B4D7E2213954DF0018B98D /* QuestionInitDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4D7E1213954DF0018B98D /* QuestionInitDataProvider.swift */; };
+		04B4D7E4213955B20018B98D /* CoreDataQuestionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4D7E3213955B20018B98D /* CoreDataQuestionsProvider.swift */; };
 		F53D31E72125B77C00AA6CF8 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53D31E62125B77C00AA6CF8 /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +98,9 @@
 		046701F92136E04C00B18B94 /* AvatarStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarStore.swift; sourceTree = "<group>"; };
 		048D4FEB210F128D00C37B59 /* GameQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameQuestionView.swift; sourceTree = "<group>"; };
 		048D4FED210F129600C37B59 /* GameQuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameQuestionView.xib; sourceTree = "<group>"; };
+		04B4D7DF2139523F0018B98D /* CoreDataInitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataInitHelper.swift; sourceTree = "<group>"; };
+		04B4D7E1213954DF0018B98D /* QuestionInitDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionInitDataProvider.swift; sourceTree = "<group>"; };
+		04B4D7E3213955B20018B98D /* CoreDataQuestionsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataQuestionsProvider.swift; sourceTree = "<group>"; };
 		F53D31E62125B77C00AA6CF8 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +238,8 @@
 			children = (
 				045ED7BD20FE096F004155D2 /* Extensions.swift */,
 				0450ECE821259E8700604212 /* VZLogger.swift */,
+				04B4D7DF2139523F0018B98D /* CoreDataInitHelper.swift */,
+				04B4D7E1213954DF0018B98D /* QuestionInitDataProvider.swift */,
 			);
 			path = developer;
 			sourceTree = "<group>";
@@ -254,6 +262,7 @@
 				04285DA22111DB870087067B /* Player.swift */,
 				046701F72136E01300B18B94 /* CoreDataPlayerProvider.swift */,
 				046701F92136E04C00B18B94 /* AvatarStore.swift */,
+				04B4D7E3213955B20018B98D /* CoreDataQuestionsProvider.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -406,9 +415,11 @@
 				045ED7CE21008B86004155D2 /* GameViewController.swift in Sources */,
 				F53D31E72125B77C00AA6CF8 /* ResultView.swift in Sources */,
 				046701D62135423700B18B94 /* ResultColumnLayer.swift in Sources */,
+				04B4D7E4213955B20018B98D /* CoreDataQuestionsProvider.swift in Sources */,
 				04285D922111D0590087067B /* DatabaseHelper.swift in Sources */,
 				045ED7D421008E9A004155D2 /* AlertView.swift in Sources */,
 				04285D992111D1200087067B /* PlayerCD+CoreDataProperties.swift in Sources */,
+				04B4D7E02139523F0018B98D /* CoreDataInitHelper.swift in Sources */,
 				0465863E210B3A2000C45DB7 /* InterimResultViewController.swift in Sources */,
 				045ED7D221008BEE004155D2 /* GameModel.swift in Sources */,
 				04658648210B3B7900C45DB7 /* PlayerResult.swift in Sources */,
@@ -421,6 +432,7 @@
 				045ED7BE20FE096F004155D2 /* Extensions.swift in Sources */,
 				045ED7C520FE1070004155D2 /* PlayerCell.swift in Sources */,
 				045ED7AA20FDFE9A004155D2 /* GameNavigation.swift in Sources */,
+				04B4D7E2213954DF0018B98D /* QuestionInitDataProvider.swift in Sources */,
 				04285DA32111DB870087067B /* Player.swift in Sources */,
 				048D4FEC210F128D00C37B59 /* GameQuestionView.swift in Sources */,
 				045ED7B820FE08FF004155D2 /* GamerListViewController.swift in Sources */,
