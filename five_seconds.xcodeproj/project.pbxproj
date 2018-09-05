@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0406939521400E6D00029F05 /* countdown.flac in Resources */ = {isa = PBXBuildFile; fileRef = 0406939421400E6C00029F05 /* countdown.flac */; };
+		0406939721400E8A00029F05 /* result.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0406939621400E8A00029F05 /* result.wav */; };
+		0406939921400E9700029F05 /* final.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0406939821400E9700029F05 /* final.wav */; };
 		04285D8C2111CFB50087067B /* 5seconds.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04285D8A2111CFB50087067B /* 5seconds.xcdatamodeld */; };
 		04285D922111D0590087067B /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04285D912111D0590087067B /* DatabaseHelper.swift */; };
 		04285D952111D07A0087067B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04285D942111D07A0087067B /* CoreData.framework */; };
@@ -55,6 +58,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0406939421400E6C00029F05 /* countdown.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = countdown.flac; sourceTree = "<group>"; };
+		0406939621400E8A00029F05 /* result.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = result.wav; sourceTree = "<group>"; };
+		0406939821400E9700029F05 /* final.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = final.wav; sourceTree = "<group>"; };
 		04285D8B2111CFB50087067B /* 5seconds.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 5seconds.xcdatamodel; sourceTree = "<group>"; };
 		04285D912111D0590087067B /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseHelper.swift; path = "five_seconds/core data/DatabaseHelper.swift"; sourceTree = SOURCE_ROOT; };
 		04285D942111D07A0087067B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -116,6 +122,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0406939321400E4C00029F05 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				0406939821400E9700029F05 /* final.wav */,
+				0406939621400E8A00029F05 /* result.wav */,
+				0406939421400E6C00029F05 /* countdown.flac */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
 		04285D772111CA8F0087067B /* core data */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +173,7 @@
 		045ED79020FDFDC8004155D2 /* five_seconds */ = {
 			isa = PBXGroup;
 			children = (
+				0406939321400E4C00029F05 /* sounds */,
 				04285D772111CA8F0087067B /* core data */,
 				045ED7C020FE0E6C004155D2 /* models */,
 				045ED7BC20FE095C004155D2 /* developer */,
@@ -397,7 +414,10 @@
 				045ED7B020FE00A4004155D2 /* MenuViewController.storyboard in Resources */,
 				045ED7BA20FE090E004155D2 /* GamerListViewController.storyboard in Resources */,
 				045ED7D021008B95004155D2 /* GameViewController.storyboard in Resources */,
+				0406939721400E8A00029F05 /* result.wav in Resources */,
 				04658644210B3A5000C45DB7 /* FinalResultViewController.storyboard in Resources */,
+				0406939921400E9700029F05 /* final.wav in Resources */,
+				0406939521400E6D00029F05 /* countdown.flac in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
