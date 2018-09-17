@@ -46,23 +46,49 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjH-cg-fYu">
-                                <rect key="frame" x="20" y="35" width="335" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjH-cg-fYu">
+                                <rect key="frame" x="20" y="35" width="335" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winner is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NF6-ao-q7o">
+                                <rect key="frame" x="16" y="477" width="343" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYS-G5-Qdi">
+                                <rect key="frame" x="16" y="502" width="343" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5W-P5-4uP" customClass="ResultView" customModule="_second" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="375" height="373"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.38823529411764707" green="0.28627450980392155" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="SZW-aE-hHo" firstAttribute="trailing" secondItem="NF6-ao-q7o" secondAttribute="trailing" constant="16" id="2ZE-02-vC2"/>
                             <constraint firstItem="EjH-cg-fYu" firstAttribute="leading" secondItem="SZW-aE-hHo" secondAttribute="leading" constant="20" id="4cj-sB-Fiy"/>
+                            <constraint firstItem="YYS-G5-Qdi" firstAttribute="leading" secondItem="SZW-aE-hHo" secondAttribute="leading" constant="16" id="8SV-97-GN2"/>
+                            <constraint firstItem="SZW-aE-hHo" firstAttribute="trailing" secondItem="YYS-G5-Qdi" secondAttribute="trailing" constant="16" id="EzH-hl-sr6"/>
+                            <constraint firstItem="NF6-ao-q7o" firstAttribute="leading" secondItem="SZW-aE-hHo" secondAttribute="leading" constant="16" id="F6d-BC-lYF"/>
+                            <constraint firstItem="Yux-Pr-8ec" firstAttribute="top" secondItem="YYS-G5-Qdi" secondAttribute="bottom" constant="20" id="KJ1-90-fdG"/>
                             <constraint firstItem="SZW-aE-hHo" firstAttribute="trailing" secondItem="20w-bN-pzS" secondAttribute="trailing" constant="40" id="KQJ-NA-it4"/>
                             <constraint firstItem="SZW-aE-hHo" firstAttribute="bottom" secondItem="20w-bN-pzS" secondAttribute="bottom" constant="20" id="OMb-j4-cVw"/>
                             <constraint firstItem="EjH-cg-fYu" firstAttribute="top" secondItem="SZW-aE-hHo" secondAttribute="top" constant="15" id="PqN-VR-hrC"/>
+                            <constraint firstItem="NF6-ao-q7o" firstAttribute="top" secondItem="B5W-P5-4uP" secondAttribute="bottom" constant="20" id="QiW-WK-Inq"/>
                             <constraint firstItem="SZW-aE-hHo" firstAttribute="trailing" secondItem="EjH-cg-fYu" secondAttribute="trailing" constant="20" id="RBo-EA-jG6"/>
+                            <constraint firstItem="B5W-P5-4uP" firstAttribute="leading" secondItem="SZW-aE-hHo" secondAttribute="leading" id="Rb8-ZT-K0k"/>
                             <constraint firstItem="SZW-aE-hHo" firstAttribute="trailing" secondItem="Yux-Pr-8ec" secondAttribute="trailing" constant="40" id="bJl-SG-cpW"/>
+                            <constraint firstItem="SZW-aE-hHo" firstAttribute="trailing" secondItem="B5W-P5-4uP" secondAttribute="trailing" id="dvM-AC-NyZ"/>
+                            <constraint firstItem="B5W-P5-4uP" firstAttribute="top" secondItem="EjH-cg-fYu" secondAttribute="bottom" constant="20" id="ejo-ni-USw"/>
                             <constraint firstItem="20w-bN-pzS" firstAttribute="top" secondItem="Yux-Pr-8ec" secondAttribute="bottom" constant="8" id="h5a-Ol-G5M"/>
                             <constraint firstItem="Yux-Pr-8ec" firstAttribute="leading" secondItem="SZW-aE-hHo" secondAttribute="leading" constant="40" id="n1z-f6-LeM"/>
+                            <constraint firstItem="YYS-G5-Qdi" firstAttribute="top" secondItem="NF6-ao-q7o" secondAttribute="bottom" constant="6" id="nMd-dp-Ys0"/>
                             <constraint firstItem="20w-bN-pzS" firstAttribute="leading" secondItem="SZW-aE-hHo" secondAttribute="leading" constant="40" id="qLk-hI-Bga"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SZW-aE-hHo"/>
@@ -70,6 +96,9 @@
                     <connections>
                         <outlet property="finishGameButton" destination="Yux-Pr-8ec" id="nhe-Yd-0ug"/>
                         <outlet property="playAgainButton" destination="20w-bN-pzS" id="SnJ-oW-ZE2"/>
+                        <outlet property="resultView" destination="B5W-P5-4uP" id="1E4-tG-6Wj"/>
+                        <outlet property="winPlayerLabel" destination="YYS-G5-Qdi" id="HMC-NW-Utd"/>
+                        <outlet property="winTitlePlayerLabel" destination="NF6-ao-q7o" id="Wgb-Nc-3Gd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIg-di-OJo" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -22,13 +22,27 @@ class FinalResultViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var winTitlePlayerLabel: UILabel!
+    @IBOutlet weak var winPlayerLabel: UILabel!
+    @IBOutlet weak var resultView: ResultView!
+    
     var model: GameResult!
     var completion: ((_ isNeedRestart: Bool) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setWinners()
+    }
+    
+    private func setWinners() {
+        let winners = model.players.filter {$0.result == 10}
+        
+        var winnersList = ""
+        winners.forEach({winnersList += $0.player.name + "\n"})
+        
+        winTitlePlayerLabel.text = winners.count > 1 ? "Winners is:" : "Winner is:"
+        winPlayerLabel.text = winnersList
     }
 
     deinit {
